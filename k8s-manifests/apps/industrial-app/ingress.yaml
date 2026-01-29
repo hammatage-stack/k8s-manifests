@@ -8,7 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:REGION:ACCOUNT:certificate/XXXX
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:954976317670:certificate/b3201781-454d-43d0-883a-06697603e1af
 spec:
   ingressClassName: alb   # <-- NEW: this tells AWS LB Controller to manage it
   rules:
