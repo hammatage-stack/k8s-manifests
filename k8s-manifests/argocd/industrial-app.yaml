@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/hammatage-stack/k8s-manifests.git
     targetRevision: HEAD
-    path: apps/k8s-manifests
+    path: K8S-MANIFESTS/k8s-manifests
   
   destination:
     server: https://kubernetes.default.svc
