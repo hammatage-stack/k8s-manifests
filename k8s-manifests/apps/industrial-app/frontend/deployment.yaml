@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: 954976317670.dkr.ecr.us-east-1.amazonaws.com/industrial-attachment-frontend:5c9fc77-20260129-220345
+        image: 954976317670.dkr.ecr.us-east-1.amazonaws.com/industrial-attachment-frontend:c771452-20260129-232210
         ports:
         - containerPort: 80
           name: http
