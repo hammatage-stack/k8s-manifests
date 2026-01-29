@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: industrial-attachment
+  labels:
+    app: backend
+    component: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        component: api
+    spec:
+      containers:
+      - name: backend
+        image: 954976317670.dkr.ecr.us-east-1.amazonaws.com/industrial-attachment-backend:latest
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "5000"
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: mongo-uri
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: jwt-secret
+        - name: MPESA_CONSUMER_KEY
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: mpesa-consumer-key
+        - name: MPESA_CONSUMER_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: mpesa-consumer-secret
+        - name: MPESA_SHORTCODE
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: mpesa-shortcode
+        - name: MPESA_PASSKEY
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: mpesa-passkey
+        - name: MPESA_CALLBACK_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: mpesa-callback-url
+        - name: MPESA_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: mpesa-api-url
+        - name: CLOUDINARY_CLOUD_NAME
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: cloudinary-cloud-name
+        - name: CLOUDINARY_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: cloudinary-api-key
+        - name: CLOUDINARY_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: cloudinary-api-secret
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+      imagePullSecrets:
+      - name: ecr-registry-secret

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: industrial-attachment
+  labels:
+    name: industrial-attachment
+    environment: production

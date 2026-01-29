@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: industrial-attachment
+data:
+  mpesa-callback-url: "https://app.hamanmatage.com/api/applications/mpesa/callback"
+  mpesa-api-url: "https://api.safaricom.co.ke"
+  application-fee: "500"

@@ -1,0 +1,15 @@
+# Never commit actual secrets
+secrets.yaml
+
+# Backup files
+*.bak
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
