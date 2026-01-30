@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 954976317670.dkr.ecr.us-east-1.amazonaws.com/industrial-attachment-backend:latest
+        image: 954976317670.dkr.ecr.us-east-1.amazonaws.com/industrial-attachment-backend:d40cf8f-20260130-191134
         ports:
         - containerPort: 5000
           name: http
