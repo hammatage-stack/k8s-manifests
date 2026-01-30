@@ -23,6 +23,9 @@ spec:
         ports:
         - containerPort: 80
           name: http
+        env:
+        - name: VITE_API_URL
+          value: http://backend.industrial-attachment.svc.cluster.local:5000/api
         resources:
           requests:
             memory: "256Mi"
