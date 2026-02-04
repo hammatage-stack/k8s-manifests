@@ -29,7 +29,7 @@ spec:
         - name: PORT
           value: "5000"
         - name: MONGO_URI
-          value: "mongodb+srv://Hamman:Hamp9map@industrial-attachment1.ihqs3as.mongodb.net/?appName=industrial-attachment1"
+          value: mongodb+srv://wwwhammanham22_db_user:Hamp9map@industrial-attachment.imud5fe.mongodb.net/?appName=industrial-attachment
         - name: JWT_SECRET
           valueFrom:
             secretKeyRef:
